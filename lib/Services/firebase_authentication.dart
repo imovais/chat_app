@@ -1,8 +1,16 @@
+import 'package:chat_app/Models/usermodel.dart';
+import 'package:chat_app/Services/firebase_service.dart';
+import 'package:chat_app/app/app.locator.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthChatApp {
-   Future<UserCredential> signinwithgoogle() async {
+  late UserModel _currentUser;
+  UserModel get currentuser => _currentUser;
+  final FirebaseService _firebaseFirestore = locator<FirebaseService>();
+
+  Future<bool> signinwithgoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser =
         await GoogleSignIn(scopes: <String>['email']).signIn();
@@ -19,11 +27,16 @@ class FirebaseAuthChatApp {
 
     // Once signed in, return the UserCredential
     var data = await FirebaseAuth.instance.signInWithCredential(credential);
-    print('working');
-    return data;
+    _currentUser = UserModel(data.user!.uid, data.user!.displayName.toString(),
+        data.user!.email.toString());
+
+    //Create User
+    _firebaseFirestore.createUser(_currentUser);
+    return data.user != null;
   }
 
-  static currentUser() {
-    FirebaseAuth.instance.currentUser;
+  Future signOut() async {
+    await FirebaseAuth.instance.signOut();
+    print('Sign Out Sucessfully');
   }
 }

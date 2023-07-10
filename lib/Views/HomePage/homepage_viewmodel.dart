@@ -14,4 +14,7 @@ class HomePageViewModel extends BaseViewModel {
   navigateToLoginPage() {
     navigationService.navigateToLoginPageView();
   }
+
+  getSignOut() =>
+      _firebaseAuthChatApp.signOut().then((value) => navigateToLoginPage());
 }

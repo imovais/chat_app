@@ -10,6 +10,7 @@ import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
 import '../Services/firebase_authentication.dart';
+import '../Services/firebase_service.dart';
 
 final locator = StackedLocator.instance;
 
@@ -24,4 +25,5 @@ Future<void> setupLocator({
 // Register dependencies
   locator.registerSingleton(NavigationService());
   locator.registerLazySingleton(() => FirebaseAuthChatApp());
+  locator.registerLazySingleton(() => FirebaseService());
 }

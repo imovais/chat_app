@@ -16,6 +16,11 @@ class LoginPageView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: const Text('LoginPage'),
+            actions: [
+              IconButton(
+                  onPressed: () => viewModel.getSignOut(),
+                  icon: const Icon(Icons.logout))
+            ],
           ),
           body: Center(
               child: Column(

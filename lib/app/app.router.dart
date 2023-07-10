@@ -5,15 +5,15 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:chat_app/Views/HomePage/homepage_view.dart' as _i3;
+import 'package:chat_app/Views/LoginPage/loginpage_view.dart' as _i2;
 import 'package:flutter/material.dart' as _i4;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:chat_app/Views/HomePage/homepage_view.dart' as _i3;
-import 'package:chat_app/Views/LoginPage/loginpage_view.dart' as _i2;
 import 'package:stacked_services/stacked_services.dart' as _i5;
 
 class Routes {
-  static const loginPageView = '/';
+  static const loginPageView = '/login-page-view';
 
   static const homePageView = '/home-page-view';
 
