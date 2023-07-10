@@ -22,5 +22,6 @@ class HomePageViewModel extends BaseViewModel {
       .then((value) => navigateToLoginPage());
 
   getcurrentuser() => _firebaseAuthChatApp.currentuser?.username;
-  getalluser() => _firebaseService.allusers();
+  getalluser() => _firebaseService
+      .allusers(_firebaseAuthChatApp.currentuser!.id.toString());
 }

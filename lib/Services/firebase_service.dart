@@ -1,5 +1,6 @@
 import 'package:chat_app/Models/usermodel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseService {
   final CollectionReference usercollectionRef =
@@ -13,8 +14,15 @@ class FirebaseService {
     }
   }
 
-  Future allusers() async {
+  Future allusers(String currentuser) async {
     var data = await usercollectionRef.get();
-    return data;
+    if (data.docs.isNotEmpty) {
+      var userlist = data.docs
+          .map(
+              (user) => UserModel.fromMap(user.data()! as Map<String, dynamic>))
+          .where((user) => user.id != currentuser)
+          .toList();
+      return userlist;
+    }
   }
 }

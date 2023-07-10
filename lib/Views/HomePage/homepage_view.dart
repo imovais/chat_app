@@ -1,7 +1,9 @@
 import 'package:chat_app/Models/usermodel.dart';
+import 'package:chat_app/Views/ChatPage/chat_view.dart';
 import 'package:chat_app/Views/HomePage/homepage_viewmodel.dart';
 import 'package:chat_app/Widgets/call_list.dart';
 import 'package:chat_app/Widgets/chat_list.dart';
+import 'package:chat_app/Widgets/contactview.dart';
 import 'package:chat_app/Widgets/status_list.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -77,24 +79,7 @@ class HomePageView extends StatelessWidget {
                   const Center(child: Text('Open Front Camera')),
 
 //CHAT LIST VIEW
-                  FutureBuilder(
-                    future: viewModel.getalluser(),
-                    builder: (BuildContext context, AsyncSnapshot snapshot) {
-                      var data = snapshot.data as UserModel;
-                      if (snapshot.hasData) {
-                        return ListView.builder(
-                          itemCount: snapshot.data.docs.length,
-                          itemBuilder: (context, index) {
-                            return whatsapp_chat_list(
-                                name: data.username.toString(),
-                                msg: data.email.toString());
-                          },
-                        );
-                      } else {
-                        return const Center(child: Text('Empty'));
-                      }
-                    },
-                  ),
+                  const ChatPageView(),
 //End CHAT LIST VIEW
 
 // STATUS LIST VIEW
@@ -141,35 +126,7 @@ class HomePageView extends StatelessWidget {
 // END STATUS LIST VIEW
 
 //CALL List View Start
-                  ListView(
-                    children: [
-                      const ListTile(
-                          leading: CircleAvatar(
-                            backgroundColor: Colors.teal,
-                            child: Icon(Icons.link),
-                          ),
-                          title: Text('Create call link'),
-                          subtitle:
-                              Text('Share a link for your WhatsApp call')),
-                      Container(
-                          margin: const EdgeInsets.only(left: 15),
-                          child: const Text('Recent')),
-                      call_list(name: 'Ovais Khan', DateTime: DateTime.now()),
-                      call_list(
-                          name: 'Sunny Khan',
-                          DateTime: DateTime.now(),
-                          imageUrl:
-                              'https://avatars.githubusercontent.com/u/101089335?v=4'),
-                      call_list(
-                          name: 'Kashif School',
-                          DateTime: DateTime.now(),
-                          imageUrl:
-                              'https://ienglishstatus.com/wp-content/uploads/2022/03/Attitude-Profile-Whatsapp-DP-Boys.jpg'),
-                      call_list(
-                          name: 'Fayyaz Office', DateTime: DateTime.now()),
-                      call_list(name: 'Ali Mirza', DateTime: DateTime.now()),
-                    ],
-                  )
+                   ContactView(viewModel: viewModel,)
 // End Call list View
                 ],
               ),

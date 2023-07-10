@@ -1,3 +1,4 @@
+import 'package:chat_app/Views/ChatPage/chat_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:chat_app/Services/firebase_authentication.dart';
 import 'package:chat_app/Views/HomePage/homepage_view.dart';
@@ -8,6 +9,7 @@ import '../Services/firebase_service.dart';
 
 @StackedApp(routes: [
   MaterialRoute(page: LoginPageView),
+  MaterialRoute(page: ChatPageView),
   MaterialRoute(
     page: HomePageView,
   ),
