@@ -12,16 +12,22 @@ class ContactView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const ListTile(
-            leading: CircleAvatar(
+        const SizedBox(
+          height: 10,
+        ),
+        Container(
+            margin: const EdgeInsets.only(left: 15),
+            child: const Text('User Profile')),
+        ListTile(
+            leading: const CircleAvatar(
               backgroundColor: Colors.teal,
               child: Icon(Icons.link),
             ),
-            title: Text('Create call link'),
-            subtitle: Text('Share a link for your WhatsApp call')),
+            title: Text(viewModel.getcurrentuser().toString()),
+            subtitle: Text(viewModel.getcurrentemail().toString())),
         Container(
             margin: const EdgeInsets.only(left: 15),
-            child: const Text('Recent')),
+            child: const Text('All Contacts')),
         Expanded(
           child: FutureBuilder(
             future: viewModel.getalluser(),

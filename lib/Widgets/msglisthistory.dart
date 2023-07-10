@@ -1,3 +1,5 @@
+import 'package:chat_app/Models/msgmodel.dart';
+import 'package:chat_app/Models/usermodel.dart';
 import 'package:chat_app/Views/HomePage/homepage_viewmodel.dart';
 import 'package:chat_app/Widgets/chat_list.dart';
 import 'package:flutter/material.dart';
@@ -17,18 +19,22 @@ class MsgListHistory extends StatelessWidget {
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               var snap = snapshot.data;
               if (snapshot.hasData) {
+                print('has data');
                 return ListView.builder(
                   itemCount: snap.length,
                   itemBuilder: (context, index) {
-                    var data = snap[index];
+                    var data = snap[index] as MessagesModel;
+
                     return GestureDetector(
                       onTap: () {
-                        viewModel.gotochatview(data);
-                        print(data.id);
+                        viewModel.gotochatview(data as UserModel);
+                        print(data.receiverName);
                       },
                       child: whatsapp_chat_list(
-                          name: data.username.toString(),
-                          msg: data.email.toString()),
+                          name: viewModel.getcurrentuser() == data.senderName
+                              ? data.receiverName
+                              : data.senderName,
+                          msg: data.messageBody.toString()),
                     );
                   },
                 );

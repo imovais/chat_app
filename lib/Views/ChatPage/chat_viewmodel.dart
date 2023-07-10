@@ -14,9 +14,8 @@ class ChatPageViewModel extends BaseViewModel {
 
   final TextEditingController msgcontroller = TextEditingController();
 
-
   // Empty Array for Message
-  final List<MessagesModel> _message = [];
+  List<MessagesModel> _message = [];
   List<MessagesModel> get message => _message;
   //========================
 
@@ -31,5 +30,18 @@ class ChatPageViewModel extends BaseViewModel {
     await _firebaseService.createMsg(message);
 
     print('creatinggggg');
+  }
+
+  void listenToMessage({required friendId}) {
+    _firebaseService
+        .listenToMessagesRealTime(
+            friendId, _firebaseAuthChatApp.currentuser!.id)
+        .listen((messagesdata) {
+      List<MessagesModel> updatedMessages = messagesdata;
+      if (updatedMessages != null) {
+        _message = updatedMessages;
+        rebuildUi();
+      }
+    });
   }
 }

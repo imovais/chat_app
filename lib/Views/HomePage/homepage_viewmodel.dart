@@ -11,7 +11,7 @@ class HomePageViewModel extends BaseViewModel {
   final FirebaseService _firebaseService = locator<FirebaseService>();
   NavigationService navigationService = locator<NavigationService>();
 
-  getCountValue() => _firebaseAuthChatApp;
+  getAuth() => _firebaseAuthChatApp;
 
   navigateToLoginPage() {
     navigationService.navigateToLoginPageView();
@@ -26,6 +26,7 @@ class HomePageViewModel extends BaseViewModel {
       .then((value) => navigateToLoginPage());
 
   getcurrentuser() => _firebaseAuthChatApp.currentuser?.username;
+  getcurrentemail() => _firebaseAuthChatApp.currentuser?.email;
   getalluser() => _firebaseService
       .allusers(_firebaseAuthChatApp.currentuser!.id.toString());
 

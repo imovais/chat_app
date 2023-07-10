@@ -1,6 +1,6 @@
-
 import 'package:chat_app/Views/HomePage/homepage_viewmodel.dart';
 import 'package:chat_app/Widgets/contactview.dart';
+import 'package:chat_app/Widgets/msglisthistory.dart';
 import 'package:chat_app/Widgets/status_list.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -21,7 +21,8 @@ class HomePageView extends StatelessWidget {
               backgroundColor: Colors.white,
               appBar: AppBar(
                   backgroundColor: Colors.teal,
-                  title: Text(viewModel.getcurrentuser().toString()),
+                  title: const Text('Whatsapp Business'),
+                  //Text(viewModel.getcurrentuser().toString()),
                   bottom: const TabBar(
                     indicatorColor: Colors.white,
                     tabs: [
@@ -76,7 +77,7 @@ class HomePageView extends StatelessWidget {
 
 //CHAT LIST VIEW
                   //const ChatPageView(),
-                  const Center(child: Text('ChatList')),
+                  MsgListHistory(viewModel: viewModel),
 //End CHAT LIST VIEW
 
 // STATUS LIST VIEW
@@ -122,9 +123,11 @@ class HomePageView extends StatelessWidget {
                   ),
 // END STATUS LIST VIEW
 
-//CALL List View Start
-                   ContactView(viewModel: viewModel,)
-// End Call list View
+//Contact List View Start
+                  ContactView(
+                    viewModel: viewModel,
+                  )
+// End Contact list View
                 ],
               ),
               floatingActionButton: FloatingActionButton(

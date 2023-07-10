@@ -53,35 +53,40 @@ class FirebaseService {
     return _chatMessagesController.stream;
   }
 
-   void _requestMessages(String friendId, String currentUserId) {
+  void _requestMessages(String friendId, String currentUserId) {
     var messagesQuerySnapshot =
         msgcollectionRef.orderBy('createdAt', descending: true);
 
     messagesQuerySnapshot.snapshots().listen((messageSnapshot) {
       if (messageSnapshot.docs.isNotEmpty) {
         var messages = messageSnapshot.docs
-            .map((ee) => MessagesModel.fromMap(ee.data()! as Map<String, dynamic>))
+            .map((ee) =>
+                MessagesModel.fromMap(ee.data()! as Map<String, dynamic>))
             .where((element) =>
                 (element?.receiverId == friendId &&
                     element?.senderId == currentUserId) ||
                 (element?.receiverId == currentUserId &&
                     element?.senderId == friendId))
-            .toList(); 
-            _chatMessagesController.add(messages.whereType<MessagesModel>().toList());
+            .toList();
+        _chatMessagesController
+            .add(messages.whereType<MessagesModel>().toList());
+      } else {
+        return;
       }
-      
     });
   }
-    Future allchatlistHistory(String currentUserId) async {
-    var data = await msgcollectionRef.get();
+
+  Future allchatlistHistory(String currentUserId) async {
+    var data =
+        await msgcollectionRef.orderBy('createdAt', descending: true).get();
     if (data.docs.isNotEmpty) {
       var msglisthistory = data.docs
-          .map(
-              (message) => MessagesModel.fromMap(message.data()! as Map<String, dynamic>))
-          .where((element) =>
-                (element?.receiverId == currentUserId ||
-                element?.senderId == currentUserId))
-            .toList();
+          .map((message) =>
+              MessagesModel.fromMap(message.data()! as Map<String, dynamic>))
+          .where((element) => (element?.receiverId == currentUserId ||
+              element?.senderId == currentUserId))
+          .toList();
+
       return msglisthistory;
     }
   }
