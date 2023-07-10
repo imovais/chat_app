@@ -20,14 +20,14 @@ class LoginPageView extends StatelessWidget {
             elevation: 0,
             automaticallyImplyLeading: false,
             centerTitle: true,
-            // actions: [
-            //   IconButton(
-            //       onPressed: () => viewModel.gotohome(),
-            //       icon: const Icon(
-            //         Icons.home,
-            //         color: Colors.grey,
-            //       ))
-            // ],
+            actions: [
+              IconButton(
+                  onPressed: () => viewModel.gotoGoogleMap(),
+                  icon: const Icon(
+                    Icons.home,
+                    color: Colors.grey,
+                  ))
+            ],
           ),
           body: Center(
               child: Column(

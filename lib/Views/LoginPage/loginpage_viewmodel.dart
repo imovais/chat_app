@@ -12,6 +12,7 @@ class LoginPageViewModel extends BaseViewModel {
   NavigationService navigationService = locator<NavigationService>();
 
   gotohome() => navigationService.replaceWithHomePageView();
+  gotoGoogleMap() => navigationService.replaceWithGoogleMapView();
 
 // GET METHOD FROM SERVICES
   getfirebaseAuth() =>

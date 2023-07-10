@@ -6,10 +6,12 @@ import 'package:chat_app/Views/LoginPage/loginpage_view.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../Services/firebase_service.dart';
+import '../Views/GoogleMap/googlemap_view.dart';
 
 @StackedApp(routes: [
   MaterialRoute(page: LoginPageView),
   MaterialRoute(page: ChatPageView),
+  MaterialRoute(page: GoogleMapView),
   MaterialRoute(
     page: HomePageView,
   ),
