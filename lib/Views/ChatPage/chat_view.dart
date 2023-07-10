@@ -105,9 +105,7 @@ class ChatPageView extends StatelessWidget {
                                 return print('Contriller is Empty');
                               }
                               viewModel.sendMessage(
-                                  viewModel.msgcontroller.text,
-                                  friend.username.toString(),
-                                  friend.id.toString());
+                                  viewModel.msgcontroller.text, friend);
                               print('controller has data');
                               viewModel.msgcontroller.clear();
                             },

@@ -18,7 +18,7 @@ class MessagesList extends StatelessWidget {
       reverse: true,
       itemCount: messages.length,
       itemBuilder: (ctx, idx) {
-        bool isSent = messages[idx].senderId != friendId;
+        bool isSent = messages[idx].sender.id != friendId;
         return ChatBubble(
           isSent: isSent,
           message: messages[idx].messageBody,

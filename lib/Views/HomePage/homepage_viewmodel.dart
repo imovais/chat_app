@@ -32,4 +32,6 @@ class HomePageViewModel extends BaseViewModel {
 
   getallmsglisthistory() => _firebaseService.allchatlistHistory(
        _firebaseAuthChatApp.currentuser!.id.toString());
+
+      
 }

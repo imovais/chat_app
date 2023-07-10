@@ -19,23 +19,26 @@ class MsgListHistory extends StatelessWidget {
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               var snap = snapshot.data;
               if (snapshot.hasData) {
-                print('has data');
+                print('has data from ui ${snap.length}');
                 return ListView.builder(
                   itemCount: snap.length,
                   itemBuilder: (context, index) {
-                    var data = snap[index] as MessagesModel;
+                    var data = snap[index] as UserModel;
 
                     return GestureDetector(
-                      onTap: () {
-                        viewModel.gotochatview(data as UserModel);
-                        print(data.receiverName);
-                      },
-                      child: whatsapp_chat_list(
-                          name: viewModel.getcurrentuser() == data.senderName
-                              ? data.receiverName
-                              : data.senderName,
-                          msg: data.messageBody.toString()),
-                    );
+                        onTap: () {
+                          viewModel.gotochatview(data as UserModel);
+                          // print(data.username);
+                          // print(viewModel.getcurrentuser());
+                        },
+                        child: whatsapp_chat_list(
+                          name: data.username,
+                          // viewModel.getcurrentuser() == data.sender.username
+                          //     ? data.receiver.username
+                          //     : data.sender.username,
+                          msg: data.email,
+                          //data.messageBody.toString()),
+                        ));
                   },
                 );
               } else {

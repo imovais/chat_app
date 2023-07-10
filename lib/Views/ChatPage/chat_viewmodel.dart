@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../../Models/usermodel.dart';
+
 class ChatPageViewModel extends BaseViewModel {
   final FirebaseAuthChatApp _firebaseAuthChatApp =
       locator<FirebaseAuthChatApp>();
@@ -19,17 +21,17 @@ class ChatPageViewModel extends BaseViewModel {
   List<MessagesModel> get message => _message;
   //========================
 
-  Future sendMessage(String msgbody, String receivername, receiverId) async {
+  Future sendMessage(String msgbody, UserModel reciver) async {
     final MessagesModel message = MessagesModel(
-        receiverId: receiverId,
-        senderId: _firebaseAuthChatApp.currentuser!.id,
-        messageBody: msgbody,
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-        senderName: _firebaseAuthChatApp.currentuser!.username,
-        receiverName: receivername);
+      sender: _firebaseAuthChatApp.currentuser!,
+      receiver: reciver,
+      messageBody: msgbody,
+      createdAt: DateTime.now().millisecondsSinceEpoch,
+    );
     await _firebaseService.createMsg(message);
 
-    print('creatinggggg');
+    print(
+        'creatinggggg ${reciver.username} ${_firebaseAuthChatApp.currentuser?.username}');
   }
 
   void listenToMessage({required friendId}) {
