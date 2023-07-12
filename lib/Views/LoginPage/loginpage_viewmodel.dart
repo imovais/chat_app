@@ -4,9 +4,12 @@ import 'package:chat_app/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class LoginPageViewModel extends BaseViewModel {
-  final FirebaseAuthChatApp _firebaseAuthChatApp =
-      locator<FirebaseAuthChatApp>();
+  //FIREBASE AUTH SERVICE INSTANCE
+  final FirebaseAuthChatApp _firebaseAuthChatApp = locator<FirebaseAuthChatApp>();
+  //NAVIGATION SERVICE INSTANCE
   NavigationService navigationService = locator<NavigationService>();
 
+
+// GET METHOD FROM SERVICES
   getfirebaseAuth() => _firebaseAuthChatApp.signinwithgoogle();
 }

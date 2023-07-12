@@ -44,39 +44,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDjh4GNSIe9Sq65ZgpJWmNVfcNijpY3WIU',
-    appId: '1:340457607684:web:841d5969dbe6593aa81b51',
-    messagingSenderId: '340457607684',
-    projectId: 'chatapp-58d66',
-    authDomain: 'chatapp-58d66.firebaseapp.com',
-    storageBucket: 'chatapp-58d66.appspot.com',
+    apiKey: 'AIzaSyANBv1EKn4E2P8wr0xYMlKUBKkWPHEIQGg',
+    appId: '1:1017287457565:web:8b7780c23e45f1b6acfff4',
+    messagingSenderId: '1017287457565',
+    projectId: 'chatapp-365da',
+    authDomain: 'chatapp-365da.firebaseapp.com',
+    storageBucket: 'chatapp-365da.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBPZyeBD2Nq6wSWYHCJvWa_QhJkmlloeVM',
-    appId: '1:340457607684:android:09c0a78ae492c013a81b51',
-    messagingSenderId: '340457607684',
-    projectId: 'chatapp-58d66',
-    storageBucket: 'chatapp-58d66.appspot.com',
+    apiKey: 'AIzaSyCW8u33-vhNTy_IVsp-JF0ucY639JjVK6o',
+    appId: '1:1017287457565:android:dc192a6eec393692acfff4',
+    messagingSenderId: '1017287457565',
+    projectId: 'chatapp-365da',
+    storageBucket: 'chatapp-365da.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA_nPOqQXPgWh4ho51HgoMUoL8Nkq3vO7A',
-    appId: '1:340457607684:ios:31a3b435dbacaaa1a81b51',
-    messagingSenderId: '340457607684',
-    projectId: 'chatapp-58d66',
-    storageBucket: 'chatapp-58d66.appspot.com',
-    iosClientId: '340457607684-0tihtrl1082s8gm5bglcn74bblcuq57g.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAuBSSoMZ5EWftQyMa3zCL_uv3vqVa2rGE',
+    appId: '1:1017287457565:ios:53a8ad187e1b72b7acfff4',
+    messagingSenderId: '1017287457565',
+    projectId: 'chatapp-365da',
+    storageBucket: 'chatapp-365da.appspot.com',
+    iosClientId: '1017287457565-6mopglv25cck00uq29odj5ruab34p6b8.apps.googleusercontent.com',
     iosBundleId: 'com.example.stackedManuallyPrac',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyA_nPOqQXPgWh4ho51HgoMUoL8Nkq3vO7A',
-    appId: '1:340457607684:ios:8ab38e112b0b4681a81b51',
-    messagingSenderId: '340457607684',
-    projectId: 'chatapp-58d66',
-    storageBucket: 'chatapp-58d66.appspot.com',
-    iosClientId: '340457607684-7663h7mntqo9ilphbrve9qvjl4ntu77t.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAuBSSoMZ5EWftQyMa3zCL_uv3vqVa2rGE',
+    appId: '1:1017287457565:ios:e39c8aff7fd7c8aaacfff4',
+    messagingSenderId: '1017287457565',
+    projectId: 'chatapp-365da',
+    storageBucket: 'chatapp-365da.appspot.com',
+    iosClientId: '1017287457565-1fufbum08gse0jkuli8l7tbj1ai9goed.apps.googleusercontent.com',
     iosBundleId: 'com.example.stackedManuallyPrac.RunnerTests',
   );
 }

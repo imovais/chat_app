@@ -2,9 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthChatApp {
-  Future<UserCredential> signinwithgoogle() async {
+   Future<UserCredential> signinwithgoogle() async {
     // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAccount? googleUser =
+        await GoogleSignIn(scopes: <String>['email']).signIn();
 
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
@@ -17,6 +18,12 @@ class FirebaseAuthChatApp {
     );
 
     // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    var data = await FirebaseAuth.instance.signInWithCredential(credential);
+    print('working');
+    return data;
+  }
+
+  static currentUser() {
+    FirebaseAuth.instance.currentUser;
   }
 }
