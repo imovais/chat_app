@@ -11,11 +11,11 @@ class LoginPageViewModel extends BaseViewModel {
   //NAVIGATION SERVICE INSTANCE
   NavigationService navigationService = locator<NavigationService>();
 
-  gotohome() => navigationService.navigateToHomePageView;
+  gotohome() => navigationService.replaceWithHomePageView();
 
 // GET METHOD FROM SERVICES
   getfirebaseAuth() =>
-      _firebaseAuthChatApp.signinwithgoogle().whenComplete(() => gotohome());
+      _firebaseAuthChatApp.signinwithgoogle().then((value) => gotohome());
 
-  getSignOut() => _firebaseAuthChatApp.signOut();
+  getSignOut(context) => _firebaseAuthChatApp.signOut(context: context);
 }

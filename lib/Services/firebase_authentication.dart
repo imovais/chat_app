@@ -1,13 +1,14 @@
 import 'package:chat_app/Models/usermodel.dart';
 import 'package:chat_app/Services/firebase_service.dart';
 import 'package:chat_app/app/app.locator.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthChatApp {
-  late UserModel _currentUser;
-  UserModel get currentuser => _currentUser;
+  static UserModel? _currentUser;
+   UserModel? get currentuser => _currentUser;
   final FirebaseService _firebaseFirestore = locator<FirebaseService>();
 
   Future<bool> signinwithgoogle() async {
@@ -31,12 +32,41 @@ class FirebaseAuthChatApp {
         data.user!.email.toString());
 
     //Create User
-    _firebaseFirestore.createUser(_currentUser);
+    _firebaseFirestore.createUser(_currentUser!);
     return data.user != null;
   }
 
-  Future signOut() async {
-    await FirebaseAuth.instance.signOut();
-    print('Sign Out Sucessfully');
+  //=============GOOGLE SIGNOUT================
+
+  Future<void> signOut({required BuildContext context}) async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+
+    try {
+      if (!kIsWeb) {
+        await googleSignIn.signOut();
+      }
+      await FirebaseAuth.instance.signOut();
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        FirebaseAuthChatApp.customSnackBar(
+          content: 'Error signing out. Try again.',
+        ),
+      );
+    }
   }
+  
+
+  // =======================
+
+
+  //========SNACK BAR ========
+  static SnackBar customSnackBar({required String content}) {
+  return SnackBar(
+    backgroundColor: Colors.black,
+    content: Text(
+      content,
+      style: const TextStyle(color: Colors.redAccent, letterSpacing: 0.5),
+    ),
+  );
+}
 }

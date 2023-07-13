@@ -12,14 +12,19 @@ class LoginPageView extends StatelessWidget {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => LoginPageViewModel(),
       builder: (context, viewModel, child) {
-        print(viewModel.getfirebaseAuth());
         return Scaffold(
           appBar: AppBar(
-            title: const Text('LoginPage'),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            automaticallyImplyLeading: false,
+            centerTitle: true,
             actions: [
               IconButton(
-                  onPressed: () => viewModel.getSignOut(),
-                  icon: const Icon(Icons.logout))
+                  onPressed: () => viewModel.gotohome(),
+                  icon: const Icon(
+                    Icons.home,
+                    color: Colors.grey,
+                  ))
             ],
           ),
           body: Center(

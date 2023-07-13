@@ -12,4 +12,9 @@ class FirebaseService {
       print(e);
     }
   }
+
+  Future allusers() async {
+    var data = await usercollectionRef.get();
+    return data;
+  }
 }
