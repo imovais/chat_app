@@ -1,11 +1,7 @@
-import 'package:chat_app/Models/usermodel.dart';
-import 'package:chat_app/Views/ChatPage/chat_view.dart';
+
 import 'package:chat_app/Views/HomePage/homepage_viewmodel.dart';
-import 'package:chat_app/Widgets/call_list.dart';
-import 'package:chat_app/Widgets/chat_list.dart';
 import 'package:chat_app/Widgets/contactview.dart';
 import 'package:chat_app/Widgets/status_list.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 //import 'package:flutter_class_010423/custom_widgets/whatsapp_chatlist.dart';
@@ -79,7 +75,8 @@ class HomePageView extends StatelessWidget {
                   const Center(child: Text('Open Front Camera')),
 
 //CHAT LIST VIEW
-                  const ChatPageView(),
+                  //const ChatPageView(),
+                  const Center(child: Text('ChatList')),
 //End CHAT LIST VIEW
 
 // STATUS LIST VIEW

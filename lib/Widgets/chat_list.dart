@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:chat_app/Widgets/notification_circle.dart';
 import 'package:flutter/material.dart';
 
 Widget whatsapp_chat_list(

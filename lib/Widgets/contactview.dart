@@ -34,6 +34,7 @@ class ContactView extends StatelessWidget {
                     var data = snap[index];
                     return GestureDetector(
                       onTap: () {
+                        viewModel.gotochatview(data);
                         print(data.id);
                       },
                       child: whatsapp_chat_list(
