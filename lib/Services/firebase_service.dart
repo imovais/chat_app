@@ -49,6 +49,7 @@ class FirebaseService {
   Stream listenToMessagesRealTime(String friendId, String currentUserId) {
     // Register the handler for when the posts data changes
     _requestMessages(friendId, currentUserId);
+
     return _chatMessagesController.stream;
   }
 
@@ -70,5 +71,18 @@ class FirebaseService {
       }
       
     });
+  }
+    Future allchatlistHistory(String currentUserId) async {
+    var data = await msgcollectionRef.get();
+    if (data.docs.isNotEmpty) {
+      var msglisthistory = data.docs
+          .map(
+              (message) => MessagesModel.fromMap(message.data()! as Map<String, dynamic>))
+          .where((element) =>
+                (element?.receiverId == currentUserId ||
+                element?.senderId == currentUserId))
+            .toList();
+      return msglisthistory;
+    }
   }
 }

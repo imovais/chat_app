@@ -28,4 +28,7 @@ class HomePageViewModel extends BaseViewModel {
   getcurrentuser() => _firebaseAuthChatApp.currentuser?.username;
   getalluser() => _firebaseService
       .allusers(_firebaseAuthChatApp.currentuser!.id.toString());
+
+  getallmsglisthistory() => _firebaseService.allchatlistHistory(
+       _firebaseAuthChatApp.currentuser!.id.toString());
 }
